@@ -1,5 +1,5 @@
 import React from 'react';
-import ProfilePage from './components/UserProfilePage';
+import ProfilePage from './components/UserProfile';
 import UserContext from './components/UserContext.js';
 
 function App() {
