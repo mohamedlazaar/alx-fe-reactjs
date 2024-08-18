@@ -1,6 +1,6 @@
 // src/components/UserProfile.jsx
 import React, { useContext } from 'react';
-import { UserContext } from '../context/UserContext'; // Adjust the path as necessary
+import { UserContext } from './UserContext'; // Adjust the path as necessary
 
 function UserProfile() {
   // Use the context
