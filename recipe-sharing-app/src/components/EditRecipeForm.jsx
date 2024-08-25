@@ -1,15 +1,16 @@
-import { useState } from 'react';
-import useRecipeStore from './recipeStore';
+// src/components/EditRecipeForm.js
+import React, { useState } from 'react'
+import useRecipeStore from './recipeStore'
 
 const EditRecipeForm = ({ recipe }) => {
-  const updateRecipe = useRecipeStore(state => state.updateRecipe);
-  const [title, setTitle] = useState(recipe.title);
-  const [description, setDescription] = useState(recipe.description);
+  const [title, setTitle] = useState(recipe.title)
+  const [description, setDescription] = useState(recipe.description)
+  const updateRecipe = useRecipeStore((state) => state.updateRecipe)
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    updateRecipe({ ...recipe, title, description });
-  };
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    updateRecipe(recipe.id, { title, description })
+  }
 
   return (
     <form onSubmit={handleSubmit}>
@@ -26,7 +27,7 @@ const EditRecipeForm = ({ recipe }) => {
       />
       <button type="submit">Update Recipe</button>
     </form>
-  );
-};
+  )
+}
 
-export default EditRecipeForm;
+export default EditRecipeForm
