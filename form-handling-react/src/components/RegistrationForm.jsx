@@ -8,20 +8,30 @@ function RegistrationForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // Check if email is missing and set error if true
+    if (!email) {
+      setError('Email is required.');
+      return;
+    }
+
+    // Check if password is missing and set error if true
+    if (!password) {
+      setError('Password is required.');
+      return;
+    }
+
+    // Check if username is missing and set error if true
     if (!username) {
-      setError('All fields are required.');
-
-    }else if(!email){
-        setError('All fields are required.');
+      setError('Username is required.');
+      return;
     }
-    else if (!password){
-        setError('All fields are required.');
-    }else{
-          // Mock API submission
-        console.log('User registered:', { username, email, password });
 
-    }
-  
+    // Mock API submission
+    console.log('User registered:', { username, email, password });
+
+    // Clear error message after successful submission
+    setError('');
   };
 
   return (
