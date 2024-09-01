@@ -31,7 +31,7 @@ function RegistrationForm() {
     console.log('User registered:', { username, email, password });
 
     // Clear error message after successful submission
-    setError('');
+    setErrors('');
   };
 
   return (
