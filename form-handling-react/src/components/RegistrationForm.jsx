@@ -1,16 +1,23 @@
 import React, { useState } from 'react';
 
 function RegistrationForm() {
-  const [formData, setFormData] = useState({ username: '', email: '', password: '' });
+  const [formData, setFormData] = useState({
+    username: '',
+    email: '',
+    password: ''
+  });
   const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
   };
 
   const validate = () => {
     const newErrors = {};
-    
+
     if (!formData.username) {
       newErrors.username = 'Username is required';
     }
@@ -32,7 +39,7 @@ function RegistrationForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     const validationErrors = validate();
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
