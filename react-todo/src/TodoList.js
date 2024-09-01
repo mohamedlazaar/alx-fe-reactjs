@@ -1,10 +1,11 @@
+// src/TodoList.js
 import React, { useState } from 'react';
 
-function TodoList() {
+const TodoList = () => {
   const [todos, setTodos] = useState([
-    { id: 1, text: 'Todo 1', completed: false },
-    { id: 2, text: 'Todo 2', completed: true },
-    { id: 3, text: 'Todo 3', completed: false },
+    { id: 1, text: 'Buy milk', completed: false },
+    { id: 2, text: 'Walk the dog', completed: false },
+    { id: 3, text: 'Do laundry', completed: false },
   ]);
 
   const addTodo = (text) => {
@@ -13,11 +14,18 @@ function TodoList() {
   };
 
   const toggleTodo = (id) => {
-    setTodos(todos.map((todo) => (todo.id === id ? { ...todo, completed: !todo.completed } : todo)));
+    const updatedTodos = todos.map((todo) => {
+      if (todo.id === id) {
+        return { ...todo, completed: !todo.completed };
+      }
+      return todo;
+    });
+    setTodos(updatedTodos);
   };
 
   const deleteTodo = (id) => {
-    setTodos(todos.filter((todo) => todo.id !== id));
+    const updatedTodos = todos.filter((todo) => todo.id !== id);
+    setTodos(updatedTodos);
   };
 
   return (
@@ -26,15 +34,21 @@ function TodoList() {
       <ul>
         {todos.map((todo) => (
           <li key={todo.id}>
-            <input type="checkbox" checked={todo.completed} onChange={() => toggleTodo(todo.id)} />
-            {todo.text}
+            <span
+              style={{
+                textDecoration: todo.completed ? 'line-through' : 'none',
+              }}
+            >
+              {todo.text}
+            </span>
+            <button onClick={() => toggleTodo(todo.id)}>Toggle</button>
             <button onClick={() => deleteTodo(todo.id)}>Delete</button>
           </li>
         ))}
       </ul>
-      {/* AddTodoForm component here */}
+      <AddTodoForm addTodo={addTodo} />
     </div>
   );
-}
+};
 
 export default TodoList;
