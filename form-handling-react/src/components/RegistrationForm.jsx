@@ -10,17 +10,18 @@ function RegistrationForm() {
     e.preventDefault();
     if (!username) {
       setError('All fields are required.');
-      return;
+
     }else if(!email){
         setError('All fields are required.');
-        return;
     }
     else if (!password){
         setError('All fields are required.');
-        return;
+    }else{
+          // Mock API submission
+        console.log('User registered:', { username, email, password });
+
     }
-    // Mock API submission
-    console.log('User registered:', { username, email, password });
+  
   };
 
   return (
