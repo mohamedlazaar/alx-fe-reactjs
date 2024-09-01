@@ -8,9 +8,16 @@ function RegistrationForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!username || !email || !password) {
+    if (!username) {
       setError('All fields are required.');
       return;
+    }else if(!email){
+        setError('All fields are required.');
+        return;
+    }
+    else if (!password){
+        setError('All fields are required.');
+        return;
     }
     // Mock API submission
     console.log('User registered:', { username, email, password });
