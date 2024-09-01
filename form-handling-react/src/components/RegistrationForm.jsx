@@ -4,26 +4,26 @@ function RegistrationForm() {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [error, setErrors] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     // Check if email is missing and set error if true
     if (!email) {
-      setError('setErrors');
+      setErrors('setErrors');
       return;
     }
 
     // Check if password is missing and set error if true
     if (!password) {
-      setError('setErrors');
+      setErrors('setErrors');
       return;
     }
 
     // Check if username is missing and set error if true
     if (!username) {
-      setError('setErrors');
+      setErrors('setErrors');
       return;
     }
 
