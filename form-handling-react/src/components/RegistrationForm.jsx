@@ -11,19 +11,19 @@ function RegistrationForm() {
 
     // Check if email is missing and set error if true
     if (!email) {
-      setError('Email is required.');
+      setError('setErrors');
       return;
     }
 
     // Check if password is missing and set error if true
     if (!password) {
-      setError('Password is required.');
+      setError('setErrors');
       return;
     }
 
     // Check if username is missing and set error if true
     if (!username) {
-      setError('Username is required.');
+      setError('setErrors');
       return;
     }
 
