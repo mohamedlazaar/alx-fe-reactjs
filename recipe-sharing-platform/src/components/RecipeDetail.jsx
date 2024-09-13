@@ -16,12 +16,12 @@ const RecipeDetail = () => {
 
   return (
     <div className="container mx-auto p-6">
-        <Link to="/" className="bg-slate-700 text-white underline mb-4 block hover:bg-slate-800">Back to Home</Link>
+        <Link to="/" className="bg-green-500 text-white px-3 py-2 mb-4 inline-block rounded-md hover:bg-green-400">Back to Home</Link>
       <h1 className="text-4xl font-bold mb-4">{recipe.title}</h1>
       <img src={recipe.image} alt={recipe.title} className="w-full h-64 object-cover rounded-lg mb-6" />
       <p className="text-gray-700 text-lg mb-6">{recipe.summary}</p>
 
-      <div className="bg-gray-100 p-4 rounded-lg mb-6">
+      <div className="bg-gray-100 p-4 rounded-lg mb-6 shadow-lg">
         <h2 className="text-2xl font-semibold mb-4">Ingredients</h2>
         <ul className="list-disc pl-5">
           {recipe.ingredients && recipe.ingredients.map((ingredient, index) => (
@@ -30,7 +30,7 @@ const RecipeDetail = () => {
         </ul>
       </div>
 
-      <div className="bg-gray-100 p-4 rounded-lg">
+      <div className="bg-gray-100 p-4 rounded-lg shadow-lg">
         <h2 className="text-2xl font-semibold mb-4">Instructions</h2>
         <ol className="list-decimal pl-5">
           {recipe.instructions && recipe.instructions.map((step, index) => (
