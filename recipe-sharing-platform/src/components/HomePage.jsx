@@ -19,7 +19,7 @@ const HomePage = ()=>{
           Add New Recipe
         </Link>
       </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:mx-1">
           {recipes.map((recipe) => (
             <div key={recipe.id} className="bg-white p-4 rounded-lg shadow-md">
               <img src={recipe.image} alt={recipe.title} className="w-full h-48 object-cover mb-4 rounded-lg" />

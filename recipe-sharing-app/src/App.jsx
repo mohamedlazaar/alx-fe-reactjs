@@ -14,8 +14,8 @@ function App() {
       <div>
         <h1>Recipe Sharing App</h1>
         <nav>
-          <Link to="/">Home</Link> |
-          <Link to="/favorites">My Favorites</Link> |
+          <Link to="/">Home</Link> 
+          <Link to="/favorites">My Favorites</Link> 
           <Link to="/recommendations">Recommendations</Link>
         </nav>
         <SearchBar />
