@@ -51,7 +51,7 @@ const Search = () => {
       </form>
 
       {loading && <p>Loading...</p>}
-      {error && <p>{error}</p>}
+      {error && <p>Looks like we can’t find the user{error}</p>}
 
       {userData && (
         <div className="mt-4">
