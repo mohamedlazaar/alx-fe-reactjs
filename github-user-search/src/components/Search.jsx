@@ -1,11 +1,10 @@
+// src/components/Search.jsx
 import React, { useState } from 'react';
-import { fetchUserData } from '../services/githubService';
+import { fetchGitHubUsers } from '../services/githubService';
 
 const Search = () => {
-  const [username, setUsername] = useState('');
-  const [location, setLocation] = useState('');
-  const [repos, setRepos] = useState(0);
-  const [userData, setUserData] = useState(null);
+  const [query, setQuery] = useState('');
+  const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
@@ -14,10 +13,10 @@ const Search = () => {
     setLoading(true);
     setError('');
     try {
-      const data = await fetchUserData(username, location, repos);
-      setUserData(data);
+      const userList = await fetchGitHubUsers(query);
+      setUsers(userList);
     } catch (err) {
-      setError('Looks like we can’t find the user');
+      setError('Looks like we can’t find any users.');
     } finally {
       setLoading(false);
     }
@@ -28,41 +27,38 @@ const Search = () => {
       <form onSubmit={handleSearch}>
         <input
           type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          placeholder="Search GitHub Username"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder="Search GitHub Users"
           className="border p-2 rounded"
         />
-        <input
-          type="text"
-          value={location}
-          onChange={(e) => setLocation(e.target.value)}
-          placeholder="Location"
-          className="border p-2 rounded ml-2"
-        />
-        <input
-          type="number"
-          value={repos}
-          onChange={(e) => setRepos(e.target.value)}
-          placeholder="Min Repos"
-          className="border p-2 rounded ml-2"
-        />
-        <button type="submit" className="bg-blue-500 text-white p-2 rounded ml-2">Search</button>
+        <button type="submit" className="bg-blue-500 text-white p-2 rounded ml-2">
+          Search
+        </button>
       </form>
 
       {loading && <p>Loading...</p>}
-      {error && <p>Looks like we can’t find the user{error}</p>}
+      {error && <p>Looks like we can’t find any users.{error}</p>}
 
-      {userData && (
+      {users.length > 0 && (
         <div className="mt-4">
-          <img src={userData.avatar_url} alt={userData.login} className="w-24 h-24 rounded-full mb-2" />
-          <h3 className="text-2xl font-bold">{userData.name || userData.login}</h3>
-          <p>{userData.bio}</p>
-          <p>Location: {userData.location}</p>
-          <p>Repositories: {userData.public_repos}</p>
-          <a href={userData.html_url} target="_blank" rel="noopener noreferrer" className="text-blue-500">
-            View GitHub Profile
-          </a>
+          <h2 className="text-2xl font-bold mb-4">Search Results:</h2>
+          <ul>
+            {users.map((user) => (
+              <li key={user.id} className="border p-4 rounded mb-4">
+                <img src={user.avatar_url} alt={user.login} className="w-16 h-16 rounded-full" />
+                <h3 className="text-xl font-bold">{user.login}</h3>
+                <a
+                  href={user.html_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-500"
+                >
+                  View GitHub Profile
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
       )}
     </div>
