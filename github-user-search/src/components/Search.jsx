@@ -1,6 +1,6 @@
 // src/components/Search.jsx
 import React, { useState } from 'react';
-import { fetchGitHubUsers } from '../services/githubService';
+import { fetchGitHubUsers } from '../services/githubService'; // Import the correct function
 
 const Search = () => {
   const [query, setQuery] = useState('');
@@ -15,10 +15,10 @@ const Search = () => {
     setLoading(true);
     setError('');
     try {
-      const userList = await fetchGitHubUsers(query, location, minRepos);
+      const userList = await fetchGitHubUsers(query, location, minRepos); // Use fetchGitHubUsers here
       setUsers(userList);
     } catch (err) {
-      setError('Error');
+      setError('Error!');
     } finally {
       setLoading(false);
     }
